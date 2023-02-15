@@ -5,7 +5,28 @@ const calculateAge = (date) => {
     return age;
 }
 
-const formValidation = (dob, accepted) => {
+const formValidation = (name, email, password, dob, accepted) => {
+    if (!name) {
+        alert('Please enter a name');
+        return false;
+    }
+
+    if (!email) {
+        alert('Please enter an email');
+        return false;
+    }
+
+    const emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email');
+        return false;
+    }
+
+    if (!password) {
+        alert('Please enter a password');
+        return false;
+    }
+
     const age = calculateAge(dob);
     if (age < 18 || age > 55) {
         alert('Age should be between 18 and 55');
@@ -29,7 +50,7 @@ const handleSubmit = (e) => {
     const dob = document.getElementById('dob').value;
     const accepted = document.getElementById('terms').checked;
 
-    if (!formValidation(dob, accepted)) {
+    if (!formValidation(email, dob, accepted)) {
         return;
     }
 
