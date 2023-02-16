@@ -5,16 +5,16 @@ const calculateAge = (date) => {
     return age;
 }
 
-const formValidation = (name, email, password, dob, accepted) => {
-    if (!name) {
-        alert('Please enter a name');
-        return false;
-    }
+const formValidation = (email, dob, accepted) => {
+    // if (!name) {
+    //     alert('Please enter a name');
+    //     return false;
+    // }
 
-    if (!email) {
-        alert('Please enter an email');
-        return false;
-    }
+    // if (!email) {
+    //     alert('Please enter an email');
+    //     return false;
+    // }
 
     const emailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
     if (!emailRegex.test(email)) {
@@ -22,10 +22,15 @@ const formValidation = (name, email, password, dob, accepted) => {
         return false;
     }
 
-    if (!password) {
-        alert('Please enter a password');
+    if(!dob) {
+        alert('Please enter a date of birth');
         return false;
     }
+
+    // if (!password) {
+    //     alert('Please enter a password');
+    //     return false;
+    // }
 
     const age = calculateAge(dob);
     if (age < 18 || age > 55) {
